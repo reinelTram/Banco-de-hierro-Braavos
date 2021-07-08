@@ -52,26 +52,31 @@ public class Cuentas {
         return (int) numeroCuenta;
     }
     
-    public void imprimirVector(){
-        System.out.println("Los elementos del vector son");
+    public  void imprimirVector(){
+        System.out.println("Los numeros de cuenta asociados son");
         for(int k=0;k<cuenta.length;k++)
             System.out.print(cuenta[k].getNumeroCuenta() + " ");
     }
     
-    public int consignarDinero(){
-        int nuevoSaldo=0;
-               
-        
+    public double consignarDinero(double dineroAConsignar){
+        double nuevoSaldo=getSaldoCuenta()+dineroAConsignar;
+ 
         return nuevoSaldo;
     }
     
-    public int retirarDinero(){
-        int nuevoSaldo=0;
+    public boolean retirarDinero(double dineroARetirar){
         
-        return nuevoSaldo;
+        if(dineroARetirar<=getSaldoCuenta()){
+            double nuevoSaldo=getSaldoCuenta()-dineroARetirar;
+            return true;
+            
+        }else
+            return false;
     }
     
     
+    
+            
     
     
     

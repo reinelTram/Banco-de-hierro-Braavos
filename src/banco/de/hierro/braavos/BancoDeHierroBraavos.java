@@ -80,34 +80,58 @@ public class BancoDeHierroBraavos {
                     break;
 
                 case 2:
-                    for (int i = 0; i < cuenta.length; i++) {
-                        cuenta[i] = new Cuentas();
+                    for (int i=0; i<cuenta.length;i++){
                         cuenta[i].imprimirVector();
-                    }
-
+                    }                  
                     break;
 
                 case 3:
                     System.out.println("Digite el numero de cuenta a la que quiere consignar");
                     int cuentaABuscar=input.nextInt();
-                    
+                    for(int i=0;i<cuenta.length;i++){
+                        if(cuentaABuscar==cuenta[i].getNumeroCuenta()){
+                            System.out.println("Digite el valor a consignar: ");
+                            double nuevoSaldo=cuenta[i].consignarDinero(input.nextInt());
+                            cuenta[i].setSaldoCuenta(nuevoSaldo);
+                        }else{
+                            System.out.println("revise su numero de cuenta e intente de nuevo");
+                        }
+                    }
 
                     break;
 
                 case 4:
-                    System.out.println("");
-                    for (int i = 0; i < productos.length; i++) {
-
-                        if (productos[i] != null) {
-                            System.out.print(productos[i] + "--");
+                    System.out.println("Digite el numero de la que desea retirar");
+                    cuentaABuscar=input.nextInt();
+                    for(int i=0;i<cuenta.length;i++){
+                        if(cuentaABuscar==cuenta[i].getNumeroCuenta()){
+                            System.out.println("Digite el valor a retirar: ");
+                            boolean nuevoSaldo=cuenta[i].retirarDinero(input.nextInt());
+                            if(nuevoSaldo=true){
+                                System.out.println("Por favor retire su dinero");
+                            }else{
+                                System.out.println("No cuenta con saldo suficiente para realizar esta acción ");                                
+                            }
+                            
+                        }else{
+                            System.out.println("revise su numero de cuenta e intente de nuevo");
                         }
-
                     }
-                    System.out.println("");
 
                     break;
 
                 case 5:
+                    System.out.println("Digite el numero de cuenta a revisar el saldo");
+                    cuentaABuscar=input.nextInt();
+                    for(int i=0;i<cuenta.length;i++){
+                        if(cuentaABuscar==cuenta[i].getNumeroCuenta()){
+                            System.out.println("Digite el valor a consignar: ");
+                            double saldo=cuenta[i].getSaldoCuenta();
+                            System.out.println("Su saldo es: " + saldo);
+                        }else{
+                            System.out.println("revise su numero de cuenta e intente de nuevo");
+                        }
+                    }
                     break;
 
                 case 6:
